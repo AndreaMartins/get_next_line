@@ -6,7 +6,7 @@
 /*   By: andmart2 <andmart2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 17:08:29 by andmart2          #+#    #+#             */
-/*   Updated: 2023/06/08 18:35:22 by andmart2         ###   ########.fr       */
+/*   Updated: 2023/06/08 20:08:18 by andmart2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,18 @@ char	*ft_strdup(char *s1)
 	return (s2);
 }
 
-unsigned int	ft_strlen( const char *string)
+unsigned int	ft_strlen(const char *s)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	while (string[i] != 0)
-	{
+	if (!s)
+		return (0);
+	while (s[i])
 		i++;
-	}
 	return (i);
 }
+
 char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*s3;
@@ -68,52 +69,7 @@ char	*ft_strjoin(char *s1, char *s2)
 		free(s1);
 	return (s3);
 }
-/*char	*ft_strjoin(char *s1, char *s2)
-{
-	size_t	len_s1;
-	size_t	len_s2;
-	size_t	i;
-	size_t	j;
-	char	*bigstring;
 
-	i = 0;
-	j = 0;
-	len_s1 = ft_strlen(s1);
-	len_s2 = ft_strlen(s2);
-	bigstring = (char *)malloc(len_s1 + len_s2 + 1);
-	if (!bigstring)
-		return (NULL);
-	while (i < len_s1)
-	{
-		bigstring[i] = s1[i];
-		i++;
-	}
-	while (j < len_s2)
-	{
-		bigstring[i + j] = s2[j];
-		j++;
-	}
-	bigstring[i + j] = '\0';
-	return (bigstring);
-}*/
-
-/*char	*ft_strchr(char *s, int c)
-{
-	int		i;
-	char	cc;
-
-	cc = (char)c;
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] == cc)
-			return ((char *)&s[i]);
-		i++;
-	}
-	if (s[i] == cc)
-		return ((char *)&s[i]);
-	return (NULL);
-}*/
 char	*ft_strchr(char *s, int c)
 {
 	int	i;
@@ -121,8 +77,8 @@ char	*ft_strchr(char *s, int c)
 	i = 0;
 	if (!s)
 		return (NULL);
-	/*if (c > 256)
-		c %= 256;*/
+	if (c > 256)
+		c %= 256;
 	while (s[i])
 	{
 		if (s[i] == c)

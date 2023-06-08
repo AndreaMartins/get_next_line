@@ -6,7 +6,7 @@
 /*   By: andmart2 <andmart2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 17:08:09 by andmart2          #+#    #+#             */
-/*   Updated: 2023/06/07 17:39:50 by andmart2         ###   ########.fr       */
+/*   Updated: 2023/06/08 18:00:02 by andmart2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 #endif
 
 unsigned int	ft_strlen( const char *string);
-char			*ft_strjoin(const char *s1, const char *s2);
-char			*ft_strrchr(const char *s, int c);
+char			*ft_strjoin(char *s1, char *s2);
+char			*ft_strchr(char *s, int c);
 char			*get_next_line(int fd);
-
+char			*ft_strdup(char *s1);
 #endif

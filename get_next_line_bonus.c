@@ -6,7 +6,7 @@
 /*   By: andmart2 <andmart2@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 15:21:12 by andmart2          #+#    #+#             */
-/*   Updated: 2023/06/14 14:44:47 by andmart2         ###   ########.fr       */
+/*   Updated: 2023/06/15 12:47:54 by andmart2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,20 +113,20 @@ char	*save_the_rest(char *store)
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char *store[1000];
+	static char	*store[OPEN_MAX];
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
-		return(NULL);
+		return (NULL);
 	store[fd] = read_and_store(fd, store[fd]);
 	if (!store[fd])
-		return(NULL);
+		return (NULL);
 	line = get_one_line(store[fd]);
 	if (!line)
 	{
 		free(store[fd]);
 		store[fd] = NULL;
 	}
-	else 
+	else
 		store[fd] = save_the_rest(store[fd]);
 	return (line);
 }
